@@ -12,6 +12,10 @@ app.use(routes)
 app.use(handleNotFound)
 app.use(handleApiError)
 
-app.listen(port, () => {
-  console.log(`Resume server listening on port ${port}`)
-})
+if (!process.env.VERCEL) {
+  app.listen(port, () => {
+    console.log(`Resume server listening on port ${port}`)
+  })
+}
+
+export default app
